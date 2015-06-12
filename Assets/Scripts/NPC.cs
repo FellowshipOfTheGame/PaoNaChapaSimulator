@@ -5,7 +5,9 @@ public class NPC : MonoBehaviour {
     private bool isFirst = false;
     private bool alreadyOrdered = true;
     private bool canDie = false;
-    private bool isAngry = false;
+    private bool isHappy = false;
+    private bool isLeaving = false;
+
     private float dist = 0f;
     private int linePosition = 0;
     private Rigidbody2D rb2D;
@@ -13,6 +15,7 @@ public class NPC : MonoBehaviour {
     private GameObject gm;
     private GameManager.Pedido pedido;
     private PolygonCollider2D poly;
+    private Fila line;
 
     public float time = 0.01666666f;
     public float vel = 0.5f;
@@ -24,7 +27,8 @@ public class NPC : MonoBehaviour {
 
     public enum Falas
     {
-        Chingar
+        Chingar,
+        Feliz
     }
 
 	// Use this for initialization
@@ -33,6 +37,7 @@ public class NPC : MonoBehaviour {
         rb2D = GetComponent<Rigidbody2D>();
         gm = GameObject.Find("GameManager");
         transform.Rotate(new Vector3(0,1,0), 180);
+        line = target.GetComponent<Fila>();
 	}
 	
 	// Update is called once per frame
@@ -45,25 +50,36 @@ public class NPC : MonoBehaviour {
         {
             patience--;
         }
-        else
+        else if (!isLeaving)
         {
-            if (!isAngry)
-            {
-                timeToDie();
-            }
+            timeToDie();
+        }
+
+        if (isLeaving && isHappy)
+        {
+            timeToLeave();
         }
 	}
 
-    void timeToDie()
+    private void timeToDie()
     {
-        target.GetComponent<Fila>().removeEnemyWithTimer(linePosition);
+        line.removeEnemyWithTimer(linePosition);
         poly.enabled = false;
         canDie = true;
-        
-        GameObject order = (GameObject)Instantiate(falas[(int)new Falas()],
-                                        transform.position + dialogOffset,
-                                                        Quaternion.identity);
-        order.transform.SetParent(transform);
+        isLeaving = true;
+
+        Speak(Falas.Chingar);
+
+        transform.Rotate(new Vector3(0, 1, 0), 180);
+    }
+
+    private void timeToLeave()
+    {
+        poly.enabled = false;
+        canDie = true;
+        isLeaving = false;
+
+        Speak(Falas.Feliz);
 
         transform.Rotate(new Vector3(0, 1, 0), 180);
     }
@@ -90,12 +106,44 @@ public class NPC : MonoBehaviour {
         {
             alreadyOrdered = false;
 
-            GameObject order = (GameObject)Instantiate(gm.GetComponent<GameManager>().pedidos[(int)pedido],
-                transform.position + dialogOffset,
-                Quaternion.identity);
-
-            order.transform.SetParent(transform);
+            //FAZER PEDIDO
+            Speak();
         }
+        else if (!poly.enabled)
+        {
+            poly.enabled = true;
+        }
+    }
+
+    private void Speak()
+    {
+        GameObject message;
+        
+        message = (GameObject)Instantiate(gm.GetComponent<GameManager>().pedidos[(int)pedido],
+                                                            transform.position + dialogOffset,
+                                                                         Quaternion.identity);
+
+        message.transform.SetParent(transform);
+    }
+
+    private void Speak(Falas fala)
+    {
+        GameObject message;
+
+        message = (GameObject)Instantiate(falas[(int) fala],
+                                transform.position + dialogOffset,
+                                             Quaternion.identity);
+
+        message.transform.SetParent(transform);
+    }
+
+    public bool checkPedido(GameObject order)
+    {
+        if (order.tag == pedido.ToString())
+        {
+            return true;
+        }
+        return false;
     }
 
     public void setTarget(GameObject target)
@@ -117,7 +165,6 @@ public class NPC : MonoBehaviour {
     public void setPedido(GameManager.Pedido pedido)
     {
         this.pedido = pedido;
-        Debug.Log("NPC " + pedido);
     }
 
     public void setIsFirst(bool isFirst)
@@ -130,17 +177,23 @@ public class NPC : MonoBehaviour {
         this.linePosition = pos;
     }
 
-    public void setAngriness(bool angry)
+    public void setHappiness(bool happy)
     {
-        this.isAngry = angry;
+        this.isHappy = happy;
     }
 
-    public bool checkPedido(GameObject order)
+    public void setCollision (bool arrived)
     {
-        if (order.tag == pedido.ToString())
-        {
-            return true;
-        }
-        return false;
+        poly.enabled = arrived;
+    }
+
+    public void setIsLeaving(bool leaving)
+    {
+        this.isLeaving = leaving;
+    }
+
+    public bool getIsLeaving()
+    {
+        return this.isLeaving;
     }
 }

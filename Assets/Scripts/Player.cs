@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
     private void OnTriggerStay2D (Collider2D obj)
     {
         Loja hit;
+        Fila fila;
         
         if (obj.tag == "Loja" && Input.GetKeyDown(KeyCode.Z) && hand == null)
         {
@@ -45,8 +46,11 @@ public class Player : MonoBehaviour {
         }
         else if (obj.tag == "Target" && Input.GetKeyDown(KeyCode.Z) && hand != null)
         {
-            if (obj.GetComponent<Fila>().removeEnemyWithOrder(hand))
+            fila = obj.GetComponent<Fila>();
+
+            if (fila.checkOrder(hand))
             {
+                fila.removeEnemyWithOrder();
                 Destroy(hand);
                 hud.removeHandItem();
             }

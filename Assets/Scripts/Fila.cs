@@ -34,24 +34,22 @@ public class Fila : MonoBehaviour {
         enemy.setDist((index * dist) + cte);
     }
 
-    public bool removeEnemyWithOrder(GameObject item)
+    public void removeEnemyWithOrder()
     {
         if (enemies.Count > 0)
         {
-            if (checkOrder(item))
-            {
                 GameObject remove = (GameObject)enemies[0];
+                NPC thing;
 
                 enemies.RemoveAt(0);
-                Destroy(remove);
 
                 updateLine();
 
-                return true;
-            }
+                thing = remove.GetComponent<NPC>();
+                thing.setTarget(GameObject.Find("GameManager"));
+                thing.setHappiness(true);
+                thing.setIsLeaving(true);
         }
-
-        return false;
     }
 
     public void removeEnemyWithTimer(int index)
@@ -67,7 +65,7 @@ public class Fila : MonoBehaviour {
 
             thing = remove.GetComponent<NPC>();
             thing.setTarget(GameObject.Find("GameManager"));
-            thing.setAngriness(true);
+            thing.setHappiness(false);
         }
     }
 
@@ -78,6 +76,7 @@ public class Fila : MonoBehaviour {
         if (enemies.Count > 0)
         {
             ((GameObject)enemies[0]).GetComponent<NPC>().setIsFirst(true);
+            ((GameObject)enemies[0]).GetComponent<NPC>().setCollision(false);
         }
 
         foreach (GameObject thing in enemies)
@@ -88,9 +87,9 @@ public class Fila : MonoBehaviour {
 
     public bool checkOrder(GameObject item)
     {
-        if (((GameObject)enemies[0]).GetComponent<NPC>().checkPedido(item))
+        if (enemies.Count > 0)
         {
-            return true;
+            return ((GameObject)enemies[0]).GetComponent<NPC>().checkPedido(item);
         }
 
         return false;

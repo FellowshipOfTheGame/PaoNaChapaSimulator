@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 460936}
   - 212: {fileID: 21238920}
   m_Layer: 0
-  m_Name: Velhao
+  m_Name: Feliz
   m_TagString: Fala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ GameObject:
   - 95: {fileID: 9568030}
   - 114: {fileID: 11423392}
   m_Layer: 0
-  m_Name: BalaoVelhao
+  m_Name: BalaoFeliz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 264253ebf95227f4e926255c3982cf39, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38524dec5e5697840b6d5f4fa7c23795, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

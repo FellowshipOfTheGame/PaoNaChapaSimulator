@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
     public GameObject enemy;
     public GameObject[] target;
     public GameObject[] pedidos;
+    public Pedido pedido;
 
     public float maxItems = 3;
 
@@ -41,7 +42,6 @@ public class GameManager : MonoBehaviour {
         NPC npc;
         int rand;
         float randY = Random.Range(yMin, yMax);
-        Pedido pedido;
 
         rndPosWithin = new Vector3(Random.Range(xMin, xMax), randY, randY);
         rndPosWithin = transform.TransformPoint(rndPosWithin * .5f);

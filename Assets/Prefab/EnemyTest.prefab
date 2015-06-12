@@ -103,6 +103,7 @@ MonoBehaviour:
   dialogOffset: {x: -.150000006, y: .349999994, z: 0}
   falas:
   - {fileID: 101454, guid: 8b5cf8c5aadcbd84aa8cf0ce905e9e0c, type: 2}
+  - {fileID: 135338, guid: 0e2cef4d1b1bd0b4faca46996697977d, type: 2}
   patience: 600
 --- !u!212 &21204608
 SpriteRenderer:
