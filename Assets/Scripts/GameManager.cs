@@ -3,16 +3,18 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public GameObject enemy;
+    public Player player;
     public GameObject[] target;
     public GameObject[] pedidos;
     public Pedido pedido;
 
     public float maxItems = 3;
-
     public float xMin = -0.1f;
     public float xMax = 0.1f;
     public float yMin = -0.1f;
     public float yMax = 0.1f;
+
+    public bool falaPlayer = false;
 
     public enum Pedido
     {
@@ -24,7 +26,6 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    
 	}
 	
 	// Update is called once per frame
@@ -32,6 +33,11 @@ public class GameManager : MonoBehaviour {
         if (Input.GetButtonDown("Spawn"))
         {
             SpawnEnemy();
+        }
+        else if (falaPlayer)
+        {
+            player.GetComponent<Player>().Speak();
+            falaPlayer = false;
         }
 	}
 

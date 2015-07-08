@@ -3,6 +3,9 @@
 public class Player : MonoBehaviour {
     public float time = 0.01666666f;
     public float vel = 2.0f;
+    public Vector3 dialogOffset;
+    public GameObject[] falas;
+    public int cooldown = 0;
 
     private Rigidbody2D rb2D;
     private Vector2 mov;
@@ -18,6 +21,10 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Move();
+        if (cooldown > 0)
+        {
+            cooldown--;
+        }
 	}
 
     private void OnTriggerStay2D (Collider2D obj)
@@ -70,5 +77,21 @@ public class Player : MonoBehaviour {
     public GameObject getHand()
     {
         return this.hand;
+    }
+
+    public void Speak()
+    {
+        if (cooldown == 0 && Random.Range(0, 100) > 40)
+        {
+            GameObject message;
+            int rand = Random.Range(0, falas.Length - 1);
+            Debug.Log(rand);
+
+            message = (GameObject)Instantiate(falas[rand], transform.position + dialogOffset, Quaternion.identity);
+
+            message.transform.SetParent(transform);
+
+            cooldown = 300;
+        }
     }
 }

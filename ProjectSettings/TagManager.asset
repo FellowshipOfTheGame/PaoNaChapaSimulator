@@ -13,6 +13,8 @@ TagManager:
   - PaoNaChapa
   - PaoDeQueijo
   - Fala
+  - Buttons
+  - UI
   layers:
   - Default
   - TransparentFX

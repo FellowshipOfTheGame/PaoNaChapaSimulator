@@ -3,10 +3,11 @@ using System.Collections;
 
 public class NPC : MonoBehaviour {
     private bool isFirst = false;
-    private bool alreadyOrdered = true;
+    private bool alreadyOrdered = false;
     private bool canDie = false;
     private bool isHappy = false;
     private bool isLeaving = false;
+    private bool canTalk = true;
 
     private float dist = 0f;
     private int linePosition = 0;
@@ -93,6 +94,15 @@ public class NPC : MonoBehaviour {
 
         vec = targetPos - vec;
 
+        if (vec.magnitude < 1)
+        {
+            if (isFirst && !alreadyOrdered && canTalk)
+            {
+                gm.GetComponent<GameManager>().falaPlayer = true;
+                canTalk = false;
+            }
+        }
+
         if (dist < vec.magnitude)
         {
             vec.Normalize();
@@ -102,9 +112,9 @@ public class NPC : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        else if (isFirst && alreadyOrdered)
+        else if (isFirst && !alreadyOrdered)
         {
-            alreadyOrdered = false;
+            alreadyOrdered = true;
 
             //FAZER PEDIDO
             Speak();
