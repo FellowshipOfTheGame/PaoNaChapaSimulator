@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Loja : MonoBehaviour {
     public GameObject item;
+    public float value;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,15 @@ public class Loja : MonoBehaviour {
 
     public GameObject InstantiateItem()
     {
-        return Instantiate(item);
+        GameObject obj = Instantiate(item);
+
+        obj.transform.position = new Vector3(100, 100, 100);
+
+        return obj;
+    }
+
+    public float getValue()
+    {
+        return this.value;
     }
 }

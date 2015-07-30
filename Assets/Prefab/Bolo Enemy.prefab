@@ -32,6 +32,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5036032
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -40,11 +41,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &11486524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8c86250a63b9278499b48c5e3bc26418, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a1c328ac77ac6c43802b27de6209189, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -93,7 +94,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a1c328ac77ac6c43802b27de6209189,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 123090}

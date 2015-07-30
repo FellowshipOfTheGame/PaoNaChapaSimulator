@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: dac833cbc3911564183c5b8487ffbad8
+timeCreated: 1436604928
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Dinero_0
+    21300002: Dinero_1
+    21300004: Dinero_2
+    21300006: Dinero_3
+    21300008: Dinero_4
+    21300010: Dinero_5
+    21300012: Dinero_6
+    21300014: Dinero_7
+    21300016: Dinero_8
+    21300018: Dinero_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Dinero_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_3
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_5
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_6
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_7
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dinero_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

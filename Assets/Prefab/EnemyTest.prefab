@@ -34,6 +34,7 @@ Transform:
   m_RootOrder: 0
 --- !u!50 &5071138
 Rigidbody2D:
+  serializedVersion: 2
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -42,11 +43,11 @@ Rigidbody2D:
   m_LinearDrag: 30
   m_AngularDrag: .0500000007
   m_GravityScale: 0
-  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!60 &6030126
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -79,7 +80,7 @@ Animator:
   m_GameObject: {fileID: 101948}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab8ec7467229b20438b0b4d5c2a08d81, type: 2}
+  m_Controller: {fileID: 9100000, guid: 05f4390212571d24db14e80b9efbbb63, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -100,11 +101,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: .0166666601
   vel: 2
-  dialogOffset: {x: -.150000006, y: .349999994, z: 0}
+  dialogOffset: {x: -.200000003, y: .400000006, z: 0}
   falas:
   - {fileID: 101454, guid: 8b5cf8c5aadcbd84aa8cf0ce905e9e0c, type: 2}
   - {fileID: 135338, guid: 0e2cef4d1b1bd0b4faca46996697977d, type: 2}
-  patience: 600
+  patience: 911
 --- !u!212 &21204608
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -129,7 +130,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7e8c2238fca5d5a4cb6742c5bad37770, type: 3}
+  m_Sprite: {fileID: 21300032, guid: 01ae4a8a1f392d14b8e12e7c062cdd84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -137,7 +138,28 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: dialogOffset.y
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dialogOffset.x
+      value: -.200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300032, guid: 01ae4a8a1f392d14b8e12e7c062cdd84,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 05f4390212571d24db14e80b9efbbb63, type: 2}
+    - target: {fileID: 0}
+      propertyPath: patience
+      value: 911
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 101948}

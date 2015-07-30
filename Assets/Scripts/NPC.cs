@@ -17,6 +17,7 @@ public class NPC : MonoBehaviour {
     private GameManager.Pedido pedido;
     private PolygonCollider2D poly;
     private Fila line;
+    private Animator anim;
 
     public float time = 0.01666666f;
     public float vel = 0.5f;
@@ -32,16 +33,15 @@ public class NPC : MonoBehaviour {
         Feliz
     }
 
-	// Use this for initialization
 	void Start () {
         poly = GetComponent<PolygonCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         gm = GameObject.Find("GameManager");
         transform.Rotate(new Vector3(0,1,0), 180);
         line = target.GetComponent<Fila>();
+        anim = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         Move();
 
@@ -105,15 +105,18 @@ public class NPC : MonoBehaviour {
 
         if (dist < vec.magnitude)
         {
+            anim.SetBool("isWalking", true);
             vec.Normalize();
             rb2D.MovePosition(rb2D.position + (vec * time * vel * 0.8f));
         }
         else if (canDie)
         {
+            anim.SetBool("isWalking", false);
             Destroy(gameObject);
         }
         else if (isFirst && !alreadyOrdered)
         {
+            anim.SetBool("isWalking", false);
             alreadyOrdered = true;
 
             //FAZER PEDIDO
@@ -121,7 +124,12 @@ public class NPC : MonoBehaviour {
         }
         else if (!poly.enabled)
         {
+            anim.SetBool("isWalking", false);
             poly.enabled = true;
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
         }
     }
 

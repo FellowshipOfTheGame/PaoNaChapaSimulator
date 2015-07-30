@@ -4,11 +4,15 @@ using System.Collections;
 
 public class HUD : MonoBehaviour {
     private Image img;
+    private GameObject go;
+    private Text txt;
 
 	// Use this for initialization
-	void Start () {
-        img = gameObject.GetComponent<Image>();
-	}
+    void Start() {
+        go = GameObject.Find("ItemHUD");
+        img = go.GetComponentInChildren<Image>();
+        txt = gameObject.GetComponentInChildren<Text>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,5 +28,10 @@ public class HUD : MonoBehaviour {
     public void removeHandItem()
     {
         img.enabled = false;
+    }
+
+    public void updateScore(float score)
+    {
+        txt.text = "Score: " + score;
     }
 }

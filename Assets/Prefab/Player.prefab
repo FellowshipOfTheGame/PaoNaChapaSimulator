@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.870000005, y: -.0489999987, z: 0}
+  m_LocalPosition: {x: -.860000014, y: .796999991, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,11 +91,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: .0166666601
   vel: 1.5
-  dialogOffset: {x: .349999994, y: .349999994, z: 0}
+  dialogOffset: {x: .280000001, y: .349999994, z: 0}
+  moneyOffset: {x: 0, y: 0, z: 0}
   falas:
   - {fileID: 135338, guid: ced6319e0813b014ebbf642435549b81, type: 2}
   - {fileID: 135338, guid: f43d7189185738f4ab6cffad5f6c68be, type: 2}
-  cooldown: 0
+  money: {fileID: 135092, guid: c923a3863c43a604a8976f276a735b3b, type: 2}
+  cooldown: 300
 --- !u!212 &21283506
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -131,7 +133,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: dialogOffset.x
-      value: .150000006
+      value: .280000001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dialogOffset.y
