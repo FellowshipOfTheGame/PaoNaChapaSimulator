@@ -11,10 +11,8 @@ public class MenuPrincipal : MonoBehaviour {
 	void Start () {
         button = GameObject.FindGameObjectWithTag("Buttons");
         insertCoin = GameObject.Find("Press Start");
-
-        Debug.Log(button);
+        
         button.SetActive(false);
-        Debug.Log(button);
 	}
 	
 	// Update is called once per frame
@@ -50,7 +48,15 @@ public class MenuPrincipal : MonoBehaviour {
 
     public void onNewGame()
     {
-        Application.LoadLevel("Testing");
+        float fadeTime = GameObject.Find("Canvas").GetComponent<Fading>().BeginFade(1);
+        Debug.Log(fadeTime);
+        StartCoroutine(changeLevelFade(fadeTime));
+    }
+
+    private IEnumerator changeLevelFade(float fadeTime)
+    {
+        yield return new WaitForSeconds(fadeTime);
+        Application.LoadLevel("Game");
     }
 
     public void onContinue()

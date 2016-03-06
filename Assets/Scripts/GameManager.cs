@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public GameObject[] enemy;
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour {
     public float spawnDelayMax;
 
     private float timer = 0f;
+    private Text displayTime;
+    private GameObject menuButtons;
 
     public enum Pedido
     {
@@ -32,7 +35,12 @@ public class GameManager : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
+	void Start() { 
+        GameObject go;
+        go = GameObject.Find("Clock");
+        menuButtons = GameObject.Find("BotoesEndGame");
+        menuButtons.SetActive(false);
+        displayTime = go.GetComponentInChildren<Text>();
         timer = Random.Range(spawnDelayMin, spawnDelayMax);
 	}
 	
@@ -41,7 +49,11 @@ public class GameManager : MonoBehaviour {
         //if (Input.GetButtonDown("Spawn"))
         //if(Random.Range(0,1) < numsei.Evaluate(Time.timeSinceLevelLoad))
         timer -= Time.deltaTime;
-        if(timer < 0)
+
+        if (levelTime - Time.timeSinceLevelLoad >= 0)
+            displayTime.text = (levelTime - Time.timeSinceLevelLoad).ToString("F0");
+
+        if (timer < 0)
         {
             SpawnEnemy();
             timer = Random.Range(spawnDelayMin, spawnDelayMax);
@@ -53,9 +65,25 @@ public class GameManager : MonoBehaviour {
         }
         if(levelTime < Time.timeSinceLevelLoad)
         {
-            Application.LoadLevel("gameover");
+            //Application.LoadLevel("gameover");
+            endGame();
         }        
 	}
+
+    private void endGame()
+    {
+        GameObject go;
+        player.GetComponent<Player>().enabled = false;
+        go = GameObject.Find("BlackFilter");
+        Animator im = go.GetComponent<Animator>();
+        im.SetBool("isGameOver", true);
+        go = GameObject.Find("ScoreIcon");
+        im = go.GetComponent<Animator>();
+        im.SetBool("isGameOver", true);
+        menuButtons.SetActive(true);
+        this.gameObject.GetComponent<GameManager>().enabled = false;
+        Debug.Log("WHAT IS GOING ON");
+    }
 
     private void SpawnEnemy()
     {

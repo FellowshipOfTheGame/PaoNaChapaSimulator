@@ -11,7 +11,8 @@ public class HUD : MonoBehaviour {
     void Start() {
         go = GameObject.Find("ItemHUD");
         img = go.GetComponentInChildren<Image>();
-        txt = gameObject.GetComponentInChildren<Text>();
+        go = GameObject.Find("ScoreIcon");
+        txt = go.GetComponentInChildren<Text>();
     }
 	
 	// Update is called once per frame
@@ -33,5 +34,31 @@ public class HUD : MonoBehaviour {
     public void updateScore(float score)
     {
         txt.text = score.ToString();
+    }
+
+    public void onPlayAgain()
+    {
+        float fadeTime = GameObject.Find("Canvas").GetComponent<Fading>().BeginFade(1);
+        Debug.Log(fadeTime);
+        StartCoroutine(changeLevelFade(fadeTime));
+    }
+
+    private IEnumerator changeLevelFade(float fadeTime)
+    {
+        yield return new WaitForSeconds(fadeTime);
+        Application.LoadLevel("Game");
+    }
+
+    public void onExitGame()
+    {
+        float fadeTime = GameObject.Find("Canvas").GetComponent<Fading>().BeginFade(1);
+        Debug.Log(fadeTime);
+        StartCoroutine(endGameFade(fadeTime));
+    }
+
+    private IEnumerator endGameFade(float fadeTime)
+    {
+        yield return new WaitForSeconds(fadeTime);
+        Application.Quit();
     }
 }
