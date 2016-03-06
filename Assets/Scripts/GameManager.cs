@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-    public GameObject enemy;
+    public GameObject[] enemy;
     public Player player;
     public GameObject[] target;
     public GameObject[] pedidos;
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
 
         rndPosWithin = new Vector3(Random.Range(xMin, xMax), randY, randY);
         rndPosWithin = transform.TransformPoint(rndPosWithin * .5f);
-        thing = (GameObject) Instantiate(enemy, rndPosWithin, transform.rotation);
+        thing = (GameObject) Instantiate(enemy[Random.Range(0,enemy.Length)], rndPosWithin, transform.rotation);
 
         rand = Random.Range(0, target.Length);
 

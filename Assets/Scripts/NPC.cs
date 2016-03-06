@@ -44,9 +44,7 @@ public class NPC : MonoBehaviour {
 	
 	void Update () {
         Move();
-
-        transform.position.Set(transform.position.x, transform.position.y, -transform.position.y);
-
+        transform.position.Set(transform.position.x, transform.position.y, transform.position.y);
         if (patience > 0)
         {
             patience--;
@@ -61,7 +59,7 @@ public class NPC : MonoBehaviour {
             timeToLeave();
         }
 	}
-
+    
     private void timeToDie()
     {
         line.removeEnemyWithTimer(linePosition);
@@ -93,6 +91,8 @@ public class NPC : MonoBehaviour {
         targetPos = new Vector2(target.transform.position.x, target.transform.position.y);
 
         vec = targetPos - vec;
+
+        
 
         if (vec.magnitude < 1)
         {

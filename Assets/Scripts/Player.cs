@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour {
     public float time = 0.01666666f;
-    public float vel = 2.0f;
+    public float speed = 2.0f;
     public Vector3 dialogOffset;
     public Vector3 moneyOffset;
     public GameObject[] falas;
@@ -26,12 +26,15 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Move();
         if (cooldown > 0)
         {
             cooldown--;
         }
 	}
+
+    void FixedUpdate(){
+        Move();
+    }
 
     private void OnTriggerStay2D (Collider2D obj)
     {
@@ -83,22 +86,14 @@ public class Player : MonoBehaviour {
 
         mov.Set(horMov, verMov);
 
-        rb2D.position += mov * time * vel;
-
+        rb2D.velocity = mov * speed;
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         Vector3 Lhamaspeed = new Vector3(0.0f, 0.0f, mov.x);
 
         if (Lhamaspeed.magnitude > 0.01)
         {
             transform.rotation = Quaternion.LookRotation(Lhamaspeed.normalized, Vector3.up);
         }
-        /*if (horMov < 0)
-        {
-            transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, -1));
-        }
-        else
-        {
-            transform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1));
-        }*/
 
         if(horMov == 0 && verMov == 0){
             anim.SetBool("isWalking", false);
