@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: .0166666601
-  vel: 2
+  vel: 2.5
   dialogOffset: {x: -.200000003, y: .400000006, z: 0}
   falas:
   - {fileID: 101454, guid: 8b5cf8c5aadcbd84aa8cf0ce905e9e0c, type: 2}
@@ -166,7 +166,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: vel
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x

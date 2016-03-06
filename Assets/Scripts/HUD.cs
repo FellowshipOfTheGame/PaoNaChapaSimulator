@@ -32,6 +32,6 @@ public class HUD : MonoBehaviour {
 
     public void updateScore(float score)
     {
-        txt.text = "Score: " + score;
+        txt.text = score.ToString();
     }
 }

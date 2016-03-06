@@ -24,8 +24,8 @@ public class NPC : MonoBehaviour {
     public Vector3 dialogOffset;
     public GameObject[] falas;
 
-    [Range((int)0f, (int)1800f)]
-    public int patience = 1800;
+    //[Range((int)0f, (int)1800f)]
+    private int patience = 1800;
 
     public enum Falas
     {
@@ -40,7 +40,8 @@ public class NPC : MonoBehaviour {
         transform.Rotate(new Vector3(0,1,0), 180);
         line = target.GetComponent<Fila>();
         anim = GetComponent<Animator>();
-	}
+        patience = Random.Range(600,1800);
+}
 	
 	void Update () {
         Move();

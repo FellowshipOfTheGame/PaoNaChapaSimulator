@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public GameObject[] falas;
     public GameObject money;
     public int cooldown = 0;
+    public int cdAction = 20;
 
     private Rigidbody2D rb2D;
     private Vector2 mov;
@@ -40,42 +41,41 @@ public class Player : MonoBehaviour {
     {
         Loja hit;
         Fila fila;
-        
-        if (obj.tag == "Loja" && Input.GetKeyDown(KeyCode.Z) && hand == null)
-        {
-            hit = obj.gameObject.GetComponent<Loja>();
-
-            if (hit != null)
+            if (obj.tag == "Loja" && Input.GetKeyDown(KeyCode.Z) && hand == null)
             {
-                hand = hit.InstantiateItem();
+                hit = obj.gameObject.GetComponent<Loja>();
 
-                if (hand != null)
+                if (hit != null)
                 {
-                    hud.drawHandItem(hand);
-                    value = hit.getValue();
+                    hand = hit.InstantiateItem();
+
+                    if (hand != null)
+                    {
+                        hud.drawHandItem(hand);
+                        value = hit.getValue();
+                    }
                 }
             }
-        }
-        else if (obj.tag == "Lixo" && Input.GetKeyDown(KeyCode.Z) && hand != null)
-        {           
-            Destroy(hand);
-            hud.removeHandItem();
-            setValue(0);
-        }
-        else if (obj.tag == "Target" && Input.GetKeyDown(KeyCode.Z) && hand != null)
-        {
-            fila = obj.GetComponent<Fila>();
-
-            if (fila.checkOrder(hand))
+            else if (obj.tag == "Lixo" && Input.GetKeyDown(KeyCode.Z) && hand != null)
             {
-                Score();
-                Speak(money);
-                fila.removeEnemyWithOrder();
                 Destroy(hand);
                 hud.removeHandItem();
+                setValue(0);
             }
-            
-        }
+            else if (obj.tag == "Target" && Input.GetKeyDown(KeyCode.Z) && hand != null)
+            {
+                fila = obj.GetComponent<Fila>();
+
+                if (fila.checkOrder(hand))
+                {
+                    Score();
+                    Speak(money);
+                    fila.removeEnemyWithOrder();
+                    Destroy(hand);
+                    hud.removeHandItem();
+                }
+
+            }
     }
 
     private void Move()

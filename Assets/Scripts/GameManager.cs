@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] target;
     public GameObject[] pedidos;
     public Pedido pedido;
+    //public AnimationCurve numsei;
 
     public float maxItems = 3;
     public float xMin = -0.1f;
@@ -15,6 +16,12 @@ public class GameManager : MonoBehaviour {
     public float yMax = 0.1f;
 
     public bool falaPlayer = false;
+
+    public float levelTime = 0f;
+    public float spawnDelayMin;
+    public float spawnDelayMax;
+
+    private float timer = 0f;
 
     public enum Pedido
     {
@@ -26,19 +33,28 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        timer = Random.Range(spawnDelayMin, spawnDelayMax);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Spawn"))
+        //if (Input.GetButtonDown("Spawn"))
+        //if(Random.Range(0,1) < numsei.Evaluate(Time.timeSinceLevelLoad))
+        timer -= Time.deltaTime;
+        if(timer < 0)
         {
             SpawnEnemy();
+            timer = Random.Range(spawnDelayMin, spawnDelayMax);
         }
         else if (falaPlayer)
         {
             player.GetComponent<Player>().Speak();
             falaPlayer = false;
         }
+        if(levelTime < Time.timeSinceLevelLoad)
+        {
+            Application.LoadLevel("gameover");
+        }        
 	}
 
     private void SpawnEnemy()
