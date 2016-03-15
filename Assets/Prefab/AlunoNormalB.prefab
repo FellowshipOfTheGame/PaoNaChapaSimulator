@@ -13,6 +13,7 @@ GameObject:
   - 50: {fileID: 5071138}
   - 114: {fileID: 11484806}
   - 60: {fileID: 6030126}
+  - 82: {fileID: 8257500}
   m_Layer: 0
   m_Name: AlunoNormalB
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 14.3127623, y: -1.7701385, z: 0}
   m_LocalScale: {x: .899999976, y: .899999976, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -71,6 +72,75 @@ PolygonCollider2D:
       - {x: .0350680947, y: -.354612917}
       - {x: .105075836, y: -.339174718}
       - {x: .18035382, y: -.273968577}
+--- !u!82 &8257500
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101948}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2ac7d74a02abf5341a3da1b1bd8a96c8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: .298999995
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9542860
 Animator:
   serializedVersion: 3
@@ -105,7 +175,6 @@ MonoBehaviour:
   falas:
   - {fileID: 101454, guid: 8b5cf8c5aadcbd84aa8cf0ce905e9e0c, type: 2}
   - {fileID: 135338, guid: 0e2cef4d1b1bd0b4faca46996697977d, type: 2}
-  patience: 911
 --- !u!212 &21204608
 SpriteRenderer:
   m_ObjectHideFlags: 1
